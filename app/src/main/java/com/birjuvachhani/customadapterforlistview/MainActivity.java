@@ -20,5 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         titles=getResources().getStringArray(R.array.titles);
         desc=getResources().getStringArray(R.array.descriptions);
+
+        CustomAdapter adapter=new CustomAdapter(MainActivity.this,R.layout.layout_single_row,titles,desc,images);
+        mlist.setAdapter(adapter);
     }
 }
