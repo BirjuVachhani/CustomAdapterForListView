@@ -14,7 +14,7 @@ import android.widget.TextView;
  * Created by birju.vachhani on 19/01/18.
  */
 
-public class CustomAdapter extends ArrayAdapter {
+public class CustomAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private String []titles;
@@ -23,7 +23,7 @@ public class CustomAdapter extends ArrayAdapter {
     private int singleRowLayoutId;
 
     public CustomAdapter(Context context, int singleRowLayoutId, String []titles, String []desc, int []images ) {
-        super(context, singleRowLayoutId);
+        super(context, singleRowLayoutId,titles);
         this.context=context;
         this.titles=titles;
         this.desc=desc;
