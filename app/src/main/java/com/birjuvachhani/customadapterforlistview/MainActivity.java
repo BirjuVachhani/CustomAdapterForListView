@@ -1,10 +1,13 @@
 package com.birjuvachhani.customadapterforlistview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private String []titles;
     private String []desc;
@@ -23,5 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
         CustomAdapter adapter=new CustomAdapter(MainActivity.this,R.layout.layout_single_row,titles,desc,images);
         mlist.setAdapter(adapter);
+        mlist.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent=new Intent(MainActivity.this,DetailedActivity.class);
+        intent.putExtra(Constants.TITLE_LABEL,titles[position]);
+        intent.putExtra(Constants.DESC_LABEL,desc[position]);
+        intent.putExtra(Constants.IMAGE_LABEL,images[position]);
+        startActivity(intent);
     }
 }

@@ -2,6 +2,7 @@
     <string name="app_name">Custom Adapter For ListView</string>
     <string name="sample_label_title">Title</string>
     <string name="sample_label_desc">Description</string>
+    <string name="item_logo">Item logo</string>
 
     <string-array name="titles">
         <item>Title 1</item>
