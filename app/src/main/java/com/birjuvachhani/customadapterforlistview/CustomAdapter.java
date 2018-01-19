@@ -36,20 +36,37 @@ public class CustomAdapter extends ArrayAdapter<String> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View row=convertView;
+        CustomViewHolder holder=null;
         if(row==null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             //view object of single row of list view
             row = inflater.inflate(singleRowLayoutId, parent, false);
+            //by using holder, we make sure that findViewById() is not called every time.
+            holder=new CustomViewHolder(row);
+            row.setTag(holder);
+        }
+        else
+        {
+            holder=(CustomViewHolder)row.getTag();
         }
 
-        ImageView mimg=(ImageView)row.findViewById(R.id.iv_img);
-        TextView mtitle=(TextView)row.findViewById(R.id.tv_title);
-        TextView mdesc=(TextView)row.findViewById(R.id.tv_desc);
-
-        mimg.setImageResource(images[position]);
-        mtitle.setText(titles[position]);
-        mdesc.setText(desc[position]);
+        holder.mimg.setImageResource(images[position]);
+        holder.mtitle.setText(titles[position]);
+        holder.mdesc.setText(desc[position]);
 
         return row;
+    }
+
+    class CustomViewHolder {
+        private ImageView mimg;
+        private TextView mtitle;
+        private TextView mdesc;
+
+        CustomViewHolder(View view)
+        {
+            mimg=(ImageView)view.findViewById(R.id.iv_img);
+            mtitle=(TextView)view.findViewById(R.id.tv_title);
+            mdesc=(TextView)view.findViewById(R.id.tv_desc);
+        }
     }
 }

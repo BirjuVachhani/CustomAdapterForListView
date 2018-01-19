@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -39,4 +41,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra(Constants.IMAGE_LABEL,images[position]);
         startActivity(intent);
     }
+
 }
