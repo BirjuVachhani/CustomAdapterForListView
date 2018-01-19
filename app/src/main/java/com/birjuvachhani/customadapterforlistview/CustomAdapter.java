@@ -35,9 +35,12 @@ public class CustomAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //view object of single row of list view
-        View row=inflater.inflate(singleRowLayoutId,parent,false);
+        View row=convertView;
+        if(row==null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //view object of single row of list view
+            row = inflater.inflate(singleRowLayoutId, parent, false);
+        }
 
         ImageView mimg=(ImageView)row.findViewById(R.id.iv_img);
         TextView mtitle=(TextView)row.findViewById(R.id.tv_title);
